@@ -9,6 +9,7 @@ School: CHHS
 Course: Computer Programming 20
  
 */
+
 public class DivisableBy3 
 {
 	
