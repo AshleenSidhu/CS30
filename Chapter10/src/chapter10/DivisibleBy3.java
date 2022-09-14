@@ -86,7 +86,7 @@ public class DivisibleBy3
 		tF.setColumns(10);
 		
 		/* Create another label to display if the integer is divisible by 3*/
-		JLabel divide = new JLabel("New label");
+		JLabel divide = new JLabel(" ");
 		divide.setBounds(173, 69, 187, 33);
 		panel.add(divide);
 		
