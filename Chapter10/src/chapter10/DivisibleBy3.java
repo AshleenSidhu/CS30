@@ -91,11 +91,11 @@ public class DivisibleBy3
 		panel.add(divide);
 		
 		/* Create button to initiate and display the code*/
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(25, 74, 138, 23);
-		panel.add(btnNewButton);
+		JButton button = new JButton("New button");
+		button.setBounds(25, 74, 138, 23);
+		panel.add(button);
 		
-		btnNewButton.addActionListener(new ActionListener() 
+		button.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{

@@ -14,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Component;
+import java.awt.event.*;
 
 public class BreakAPlate 
 {
@@ -59,7 +60,11 @@ public class BreakAPlate
 	 */
 	private void initialize() 
 	{
-		ImageIcon platesPic = new ImageIcon("src/plates.gif");
+		ImageIcon platesPic = new ImageIcon("");
+		ImageIcon pB= new ImageIcon("C:\\Users\\1005106504\\git\\CS30\\Chapter10\\src\\chapter10\\plates_all_broken.gif");
+		ImageIcon p2B = new ImageIcon("C:\\Users\\1005106504\\git\\CS30\\Chapter10\\src\\chapter10\\plates_two_broken.gif");
+		ImageIcon tigerPlush = new ImageIcon("C:\\Users\\1005106504\\git\\CS30\\Chapter10\\src\\chapter10\\tiger_plush.gif");
+		ImageIcon sticker = new ImageIcon("C:\\Users\\1005106504\\git\\CS30\\Chapter10\\src\\chapter10\\sticker.gif");
 		
 		frame = new JFrame("BreakAPlate");
 		frame.setBounds(100, 100, 450, 300);
@@ -79,12 +84,6 @@ public class BreakAPlate
 		plates.setBounds(171, 48, 46, 14);
 		panel.add(plates);
 		
-		prizeWon = new JLabel(" ");
-		prizeWon.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-		prizeWon.setBorder(BorderFactory.createEmptyBorder(20, 0 , 0 , 0));
-		prizeWon.setBounds(171, 202, 46, 14);
-		panel.add(prizeWon);
-		
 		play = new JButton("Play");
 		play.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		play.setActionCommand("Play");
@@ -92,35 +91,41 @@ public class BreakAPlate
 		play.setBounds(150, 146, 89, 23);
 		panel.add(play);
 		
+		prizeWon = new JLabel(" ");
+		prizeWon.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		prizeWon.setBorder(BorderFactory.createEmptyBorder(20, 0 , 0 , 0));
+		prizeWon.setBounds(171, 202, 46, 14);
+		panel.add(prizeWon);
+		
+		play.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				String prize = prizeWon.getText();
+			
+				if(prize.equals(FIRST_PRIZE))
+				{
+					plates.setIcon(platesPic);
+				}
+				else if (prize.equals(CONSOLATION_PRIZE))
+				{
+					plates.setIcon(p2B);
+				}
+			
+				prizeWon.setText("You win: " + prize);
+				play.setText("Play Again");
+				play.setActionCommand("Play Again");
+			
+				if (prize.equals("Play Again"))
+				{
+					plates.setIcon(platesPic);
+					prizeWon.setText(" ");
+					play.setText("Play");
+					play.setActionCommand("Play");
+				}
+			}
+		});
 	}
 
-	public void actionPerformed(ActionEvent e) 
-	{
-		String prize;
-		
-		if( == "Play")
-		{
-		if(prize.equals(FIRST_PRIZE))
-		{
-			plates.setIcon(new ImageIcon("C:\\\\Users\\\\1005106504\\\\git\\\\CS30\\\\Chapter10\\\\src\\\\chapter10\\\\plates.gif"));
-		}
-		else if (prize.equals(CONSOLATION_PRIZE))
-		{
-			plates.setIcon(new ImageIcon(""));
-		}
-		
-		prizeWon.setText("You win: " + prize);
-		play.setText("Play Again");
-		play.setActionCommand("Play Again");
-		
-		}
-		else if ( == "Play Again")
-		{
-			plates.setIcon(new ImageIcon(""));
-			prizeWon.setText(" ");
-			play.setText("Play");
-			play.setActionCommand("Play");
-		}
-		
-	}
+	
 }
